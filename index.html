@@ -566,21 +566,7 @@ body {
         animation-iteration-count: 1 !important;
     }
 }
-    .music{
-    position:absolute;
-    bottom:1.5%;
-    right:5%;
-    z-index:10;
-    border:1px solid rgba(255,216,92,.25);
-    background:rgba(255,255,255,.06);
-    color:#ffe477;
-    padding:8px 13px;
-    border-radius:20px;
-    font-family:Georgia,serif;
-    font-size:12px;
-    backdrop-filter:blur(6px);
-    cursor:pointer;
-    }
+    
 </style>
 </head>
 
@@ -782,48 +768,8 @@ for (let i = 0; i < 18; i++) {
 
     fireflyContainer.appendChild(firefly);
 }
-const musicBtn = document.getElementById("musicBtn");
 
-let audio = null;
-
-musicBtn.addEventListener("click", async () => {
-
-    if (!audio) {
-
-        audio = new Audio("mi-suerte.mp3");
-        audio.preload = "auto";
-
-        audio.addEventListener("loadedmetadata", async () => {
-            audio.currentTime = 50;
-
-            try {
-                await audio.play();
-                musicBtn.textContent = "⏸ Mi Suerte";
-            } catch (error) {
-                console.log(error);
-            }
-        });
-
-        audio.addEventListener("ended", () => {
-            musicBtn.textContent = "▶ Mi Suerte";
-        });
-
-    } else {
-
-        if (audio.paused) {
-            await audio.play();
-            musicBtn.textContent = "⏸ Mi Suerte";
-        } else {
-            audio.pause();
-            musicBtn.textContent = "▶ Mi Suerte";
-        }
-
-    }
-
-});
 </script>
-<button class="music" id="musicBtn">
-    ▶ Mi Suerte
-</button>
+
 </body>
 </html>
