@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para alguien muy especial 🌻</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 25%, #182642 0%, #0b1324 35%, #050914 70%, #02040a 100%);
+      color: #f5f1df;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.9; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+      padding: 45px 20px 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .intro h1 {
+      font-size: clamp(28px, 7vw, 48px);
+      font-weight: normal;
+      color: #f4d77b;
+      text-shadow: 0 0 20px rgba(255, 214, 88, 0.35);
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      color: #cbd2df;
+    }
+
+    .flower-scene {
+      position: relative;
+      width: 360px;
+      height: 500px;
+      margin: 10px auto 0;
+    }
+
+    .flower-glow {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      left: 25px;
+      top: 0;
+      border-radius: 50%;
+      background: rgba(255, 207, 62, 0.10);
+      filter: blur(35px);
+      animation: glow 4s ease-in-out infinite;
+    }
+
+    .flower {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 30px;
+      top: 20px;
+      animation: bloom 2.2s ease-out forwards;
+      transform: scale(0);
+    }
+
+    .petal {
+      position: absolute;
+      width: 42px;
+      height: 115px;
+      left: 129px;
+      top: 93px;
+      border-radius: 50% 50% 45% 45%;
+      transform-origin: 21px 57px;
+      background: linear-gradient(to bottom, #ffe88b, #f3b51d);
+      box-shadow:
+        0 0 12px rgba(255, 211, 71, 0.4),
+        inset 0 -8px 10px rgba(180, 111, 0, 0.15);
+    }
+
+    .petal:nth-child(1)  { transform: rotate(0deg) translateY(-63px); }
+    .petal:nth-child(2)  { transform: rotate(18deg) translateY(-63px); }
+    .petal:nth-child(3)  { transform: rotate(36deg) translateY(-63px); }
+    .petal:nth-child(4)  { transform: rotate(54deg) translateY(-63px); }
+    .petal:nth-child(5)  { transform: rotate(72deg) translateY(-63px); }
+    .petal:nth-child(6)  { transform: rotate(90deg) translateY(-63px); }
+    .petal:nth-child(7)  { transform: rotate(108deg) translateY(-63px); }
+    .petal:nth-child(8)  { transform: rotate(126deg) translateY(-63px); }
+    .petal:nth-child(9)  { transform: rotate(144deg) translateY(-63px); }
+    .petal:nth-child(10) { transform: rotate(162deg) translateY(-63px); }
+    .petal:nth-child(11) { transform: rotate(180deg) translateY(-63px); }
+    .petal:nth-child(12) { transform: rotate(198deg) translateY(-63px); }
+    .petal:nth-child(13) { transform: rotate(216deg) translateY(-63px); }
+    .petal:nth-child(14) { transform: rotate(234deg) translateY(-63px); }
+    .petal:nth-child(15) { transform: rotate(252deg) translateY(-63px); }
+    .petal:nth-child(16) { transform: rotate(270deg) translateY(-63px); }
+    .petal:nth-child(17) { transform: rotate(288deg) translateY(-63px); }
+    .petal:nth-child(18) { transform: rotate(306deg) translateY(-63px); }
+    .petal:nth-child(19) { transform: rotate(324deg) translateY(-63px); }
+    .petal:nth-child(20) { transform: rotate(342deg) translateY(-63px); }
+
+    .inner-petal {
+      position: absolute;
+      width: 35px;
+      height: 82px;
+      left: 132px;
+      top: 108px;
+      border-radius: 50%;
+      transform-origin: 18px 41px;
+      background: linear-gradient(to bottom, #ffd95a, #e89d0c);
+      z-index: 3;
+    }
+
+    .inner-petal:nth-child(21) { transform: rotate(0deg) translateY(-42px); }
+    .inner-petal:nth-child(22) { transform: rotate(36deg) translateY(-42px); }
+    .inner-petal:nth-child(23) { transform: rotate(72deg) translateY(-42px); }
+    .inner-petal:nth-child(24) { transform: rotate(108deg) translateY(-42px); }
+    .inner-petal:nth-child(25) { transform: rotate(144deg) translateY(-42px); }
+    .inner-petal:nth-child(26) { transform: rotate(180deg) translateY(-42px); }
+    .inner-petal:nth-child(27) { transform: rotate(216deg) translateY(-42px); }
+    .inner-petal:nth-child(28) { transform: rotate(252deg) translateY(-42px); }
+    .inner-petal:nth-child(29) { transform: rotate(288deg) translateY(-42px); }
+    .inner-petal:nth-child(30) { transform: rotate(324deg) translateY(-42px); }
+
+    .flower-center {
+      position: absolute;
+      width: 112px;
+      height: 112px;
+      left: 94px;
+      top: 94px;
+      border-radius: 50%;
+      z-index: 5;
+      background:
+        radial-gradient(circle at 35% 30%, #72512a 0%, #4c321b 38%, #25180c 100%);
+      box-shadow:
+        inset 0 0 20px rgba(0,0,0,0.55),
+        0 0 15px rgba(78, 49, 17, 0.5);
+    }
+
+    .seed {
+      position: absolute;
+      width: 5px;
+      height: 7px;
+      background: #9b7134;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    .seed:nth-child(1) { left: 24px; top: 20px; transform: rotate(25deg); }
+    .seed:nth-child(2) { left: 45px; top: 13px; transform: rotate(-15deg); }
+    .seed:nth-child(3) { left: 67px; top: 25px; transform: rotate(35deg); }
+    .seed:nth-child(4) { left: 83px; top: 44px; transform: rotate(-25deg); }
+    .seed:nth-child(5) { left: 20px; top: 47px; transform: rotate(-20deg); }
+    .seed:nth-child(6) { left: 42px; top: 39px; transform: rotate(15deg); }
+    .seed:nth-child(7) { left: 62px; top: 49px; transform: rotate(-10deg); }
+    .seed:nth-child(8) { left: 88px; top: 66px; transform: rotate(30deg); }
+    .seed:nth-child(9) { left: 25px; top: 73px; transform: rotate(10deg); }
+    .seed:nth-child(10) { left: 48px; top: 65px; transform: rotate(-35deg); }
+    .seed:nth-child(11) { left: 69px; top: 78px; transform: rotate(20deg); }
+    .seed:nth-child(12) { left: 43px; top: 91px; transform: rotate(-15deg); }
+    .seed:nth-child(13) { left: 80px; top: 89px; transform: rotate(25deg); }
+
+    .stem {
+      position: absolute;
+      width: 12px;
+      height: 275px;
+      left: 174px;
+      top: 190px;
+      border-radius: 10px;
+      background: linear-gradient(to right, #315f27, #5e963c, #284c20);
+      z-index: 1;
+      box-shadow: 0 0 8px rgba(54, 120, 46, 0.3);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 105px;
+      height: 50px;
+      background: linear-gradient(135deg, #4c8a32, #203f1c);
+      z-index: 2;
+    }
+
+    .leaf.left {
+      left: 75px;
+      top: 320px;
+      border-radius: 100% 0 100% 0;
+      transform: rotate(-23deg);
+    }
+
+    .leaf.right {
+      left: 180px;
+      top: 375px;
+      border-radius: 0 100% 0 100%;
+      transform: rotate(23deg);
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: scale(0) rotate(-8deg);
+        opacity: 0;
+      }
+      70% {
+        transform: scale(1.05) rotate(2deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% { transform: scale(0.95); opacity: 0.6; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .letter {
+      width: min(690px, 100%);
+      margin-top: -15px;
+      padding: 35px 28px;
+      background: rgba(8, 13, 26, 0.68);
+      border: 1px solid rgba(244, 215, 123, 0.22);
+      border-radius: 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      animation: fadeIn 2.5s ease forwards;
+    }
+
+    .letter .main-quote {
+      color: #f4d77b;
+      font-size: clamp(22px, 5vw, 31px);
+      line-height: 1.35;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .letter p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #e5e2d8;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .letter .closing {
+      margin-top: 28px;
+      color: #f0d887;
+      font-style: italic;
+    }
+
+    .footer {
+      margin-top: 35px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .page {
+        padding: 30px 14px 50px;
+      }
+
+      .flower-scene {
+        transform: scale(0.88);
+        transform-origin: top center;
+        margin-bottom: -50px;
+      }
+
+      .letter {
+        padding: 28px 20px;
+      }
+
+      .letter p {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <main class="page">
+
+    <section class="intro">
+      <h1>Para alguien muy especial 🌻</h1>
+      <p>Hay casualidades que simplemente se sienten diferentes.</p>
+    </section>
+
+    <div class="flower-scene">
+
+      <div class="flower-glow"></div>
+
+      <div class="stem"></div>
+
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+
+      <div class="flower">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+        <div class="inner-petal"></div>
+
+        <div class="flower-center">
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+          <span class="seed"></span>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="letter">
+
+      <div class="main-quote">
+        “Eres la causalidad más bonita que me pudo haber dado la vida.”
+      </div>
+
+      <p>
+        Pues al cielo suelo mirar,<br>
+        y entre tantas estrellas,<br>
+        de alguna manera siempre terminas apareciendo tú.
+      </p>
+
+      <p>
+        En tus ojos miro el mar,<br>
+        porque hay paisajes tan bonitos<br>
+        que simplemente no necesitan explicación.
+      </p>
+
+      <p>
+        Y quizá por eso pienso que<br>
+        siempre hay flores en el mundo<br>
+        para quien lleva un jardín en el alma.
+      </p>
+
+      <p>
+        Hay personas que llegan sin avisar,<br>
+        sin prometer quedarse,<br>
+        y aun así consiguen hacer<br>
+        que ciertos días se sientan diferentes.
+      </p>
+
+      <p>
+        Tal vez tú seas una de esas casualidades<br>
+        que la vida no explica,<br>
+        pero que uno agradece haber encontrado.
+      </p>
+
+      <p>
+        Porque entre tantos caminos,<br>
+        tantas personas<br>
+        y tantos momentos,<br>
+        qué bonito fue coincidir contigo.
+      </p>
+
+      <p class="closing">
+        🌻<br><br>
+        Y si algún día dudas de lo especial que eres,<br>
+        recuerda que hasta las flores<br>
+        parecen tener una forma distinta de florecer<br>
+        cuando encuentran la luz correcta.
+      </p>
+
+    </section>
+
+    <div class="footer">
+      HECHO CON CARIÑO · 🌻
+    </div>
+
+  </main>
+
+  <script>
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      star.style.transform = `scale(${0.5 + Math.random() * 1.5})`;
+
+      stars.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
